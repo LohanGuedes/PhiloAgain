@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft/src/libft.h"
 #include "philo.h"
 
 void  *routine() {
