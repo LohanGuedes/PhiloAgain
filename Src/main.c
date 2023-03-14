@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 08:41:38 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/13 08:41:40 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/13 23:35:17 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,21 @@
 void  *routine() {
   printf("Hello, World!\n");
   sleep(3);
-  printf("Thread ended");
+  printf("Thread ended\n");
   return (NULL);
 }
 
-int main(void) {
-  pthread_t t1, t2, t3;
-  pthread_create(&t1, NULL, &routine, NULL);
-  pthread_create(&t2, NULL, &routine, NULL);
-  pthread_create(&t3, NULL, &routine, NULL);
-  pthread_join(t1, NULL);
-  pthread_join(t2, NULL);
-  pthread_join(t3, NULL);
+int main(int argc, char **argv) {
+  int remaining_eat_times;
+
+  if (argc != 4) {
+     
+    return 0;
+  }
+  if (argc == 5) {
+    remaining_eat_times = atoi(argv[4]);
+  }
+
+
   return 0;
 }
