@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
   int remaining_eat_times;
 
   if (argc != 4) {
-     
+         
     return 0;
   }
   if (argc == 5) {
