@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:28:37 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/14 07:01:06 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:13:36 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <unistd.h>
 # include "../Includes/libft/src/libft.h"
 
-# define TOOK_FORK "%lf %d has taken fork"
-# define EAT "%lf %d is eating	"
-# define SLEEP "%lf %d is sleeping"
-# define THINK "%lf %d is thinking"
-# define DIED "%lf %d died" 
+# define TOOK_FORK "%ld %d has taken fork\n"
+# define EAT "%ld %d is eating\n"
+# define SLEEP "%ld %d is sleeping\n"
+# define THINK "%ld %d is thinking\n"
+# define DIED "%ld %d died\n" 
 
 typedef struct s_table	t_table;
 typedef pthread_mutex_t	t_mutex;
@@ -38,6 +38,7 @@ typedef struct s_philo
 	short		l_fork;
 	short		r_fork;
 	long int	last_meal;
+	short		eat_count;
 	t_table		*table;
 }	t_philo;
 
@@ -49,8 +50,23 @@ typedef struct s_table
 	long int	time_to_sleep;
 	short		eat_times;
 	long int	current_time;
+	short		is_dead;
 	t_philo		*philos;
 	t_mutex		*mutexes;
 }	t_table;
+
+
+void print_state(t_philo *philo, char *message);
+void philo_sleep(t_philo *philo);
+void philo_eat(t_philo *philo);
+void philo_think(t_philo *philo);
+void  take_fork(t_philo *philo);
+double  get_time_in_ms(void);
+void  eat_macaroon(t_philo *philo);
+void  mutexes_init(t_table *table);
+void init_philos(t_table *table);
+void* philo_routine(void *arg);
+double  get_time_in_ms(void);
+
 
 #endif

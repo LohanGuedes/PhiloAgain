@@ -6,7 +6,7 @@
 #    By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 13:43:30 by lguedes           #+#    #+#              #
-#    Updated: 2023/03/14 05:54:13 by lguedes          ###   ########.fr        #
+#    Updated: 2023/03/20 20:04:02 by lguedes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = clang
 CFLAGS = -Wall -Werror -Wextra -pthread
 
 
-SRCS = $(addprefix Src/, main.c init_philos.c mutexes_init.c)
+SRCS = $(addprefix Src/, main.c init_philos.c mutexes_init.c actions.c routines.c dinner.c) 
 
 OBJS = ${SRCS:.c=.o}
 

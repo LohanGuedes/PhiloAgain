@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:39:18 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/14 06:09:17 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:16:22 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,8 @@ void init_philos(t_table *table)
       table->philos[offset].r_fork = 0;
     table->philos[offset].last_meal = 0;
     table->philos[offset].table = table;
+    pthread_create(&table->philos[offset].thr, NULL, &philo_routine, &table->philos[offset]);
+  //  printf("Philo %d created ", offset);
+
   }
 }

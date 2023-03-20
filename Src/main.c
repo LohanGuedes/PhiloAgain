@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 08:41:38 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/14 05:31:41 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 20:11:28 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
  */
 int	parse_params(int argc, char **argv, t_table *table)
 {
-	if (!(argc == 5 || argc == 6))
+/* 	if (!(argc != 5 || argc != 6))
 	{
 		printf("PUT THIS ON STD ERROR: ERROR");
 		return (-1);
-	}
+	} */
 	table->eat_times = -1;
 	if (argc == 6)
 		table->eat_times = ft_atoi(argv[5]);
@@ -39,11 +39,10 @@ int	main(int argc, char **argv)
 {
 	t_table	table;
 
-	if (parse_params(argc, argv, &table) != 0)
-		return (-1);
-
-	// Init mutexes
-
-	// Init threads
+	table = (t_table){0};
+	parse_params(argc, argv, &table);
+	mutexes_init(&table);
+	init_philos(&table);
+	// Call fly -> Check for "zombie" threads?
 	return (0);
 }
