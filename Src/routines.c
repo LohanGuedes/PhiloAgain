@@ -15,8 +15,8 @@
 void  philo_routine(void *)
 {
   // Am I dead / Someome is dead?
-  // Pegar os garfos (depende) 
-  // Comer 
+  // Pegar os garfos (depende)
+  // Comer
   // Dormir
   // Pensar 
 }

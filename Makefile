@@ -13,8 +13,8 @@
 NAME = philosophers
 
 
-#TODO Change this to cc compiler later on 
-CC = clang 
+#TODO Change this to cc compiler later on
+CC = clang
 CFLAGS = -Wall -Werror -Wextra -pthread
 
 
@@ -25,7 +25,7 @@ OBJS = ${SRCS:.c=.o}
 LIBFT_A = ./Includes/libft/libft.a
 LIBFT_PATH = ./Includes/libft/
 
-.c.o: 
+.c.o:
 			${CC} ${CFLAG} -c $< -o ${<:.c=.o}
 
 all: ${NAME}
@@ -34,14 +34,14 @@ ${NAME}: LIBFT ${OBJS}
 	${CC} ${OBJS} ${LIBFT_A} ${CLAFGS}  -o $(NAME)
 
 
-LIBFT: 
+LIBFT:
 	make -C $(LIBFT_PATH)
 
-clean: 
+clean:
 	@rm -rf ${OBJS}
 	make -C $(LIBFT_PATH) clean
 
-fclean: 
+fclean:
 	@rm -rf ${OBJS}
 	@rm -rf ${NAME}
 	make -C $(LIBFT_PATH) fclean
