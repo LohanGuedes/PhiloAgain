@@ -39,10 +39,13 @@ int	main(int argc, char **argv)
 {
 	t_table	table;
 
-	table = (t_table){0};
+	table.is_dead = 0;
 	parse_params(argc, argv, &table);
 	mutexes_init(&table);
 	init_philos(&table);
+	int i = 0;
+	while (i < table.n_philos)
+		pthread_join(table.philos[i++].thr, NULL);
 	// Call fly -> Check for "zombie" threads?
 	return (0);
 }

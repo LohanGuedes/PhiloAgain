@@ -16,8 +16,8 @@ void init_philos(t_table *table)
 {
   int offset;
 
-  offset = -1;
-  while(++offset < table->n_philos)
+  offset = 0;
+  while(offset < table->n_philos)
   {
     table->philos[offset].id = offset;
     table->philos[offset].index = offset + 1;
@@ -28,7 +28,7 @@ void init_philos(t_table *table)
     table->philos[offset].last_meal = 0;
     table->philos[offset].table = table;
     pthread_create(&table->philos[offset].thr, NULL, &philo_routine, &table->philos[offset]);
-  //  printf("Philo %d created ", offset);
-
+    printf("victor\n");
+    offset++;
   }
 }

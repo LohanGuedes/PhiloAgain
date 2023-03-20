@@ -22,13 +22,16 @@ void* philo_routine(void *arg)
     usleep(550);
   while (42)
   {
-    if (philo->table->is_dead)
+    if (philo->table->is_dead == 1)
       break ;
 	take_fork(philo);
 	eat_macaroon(philo);
 	philo_sleep(philo);
 	philo_think(philo);
+	printf("Hallo \n");
+
   }
+
   
   return (NULL);
 }

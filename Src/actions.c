@@ -25,7 +25,9 @@ double  get_time_in_ms(void)
 
 void print_state(t_philo *philo, char *message)
 {
+  pthread_mutex_lock(&philo->table->print);
   printf(message, get_time_in_ms(), philo->index);
+  pthread_mutex_unlock(&philo->table->print);
 }
 
 void philo_sleep(t_philo *philo)

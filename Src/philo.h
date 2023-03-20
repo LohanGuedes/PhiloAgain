@@ -53,6 +53,7 @@ typedef struct s_table
 	short		is_dead;
 	t_philo		*philos;
 	t_mutex		*mutexes;
+	t_mutex		print;
 }	t_table;
 
 

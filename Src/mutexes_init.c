@@ -17,6 +17,7 @@ void  mutexes_init(t_table *table)
   int offset;
 
   offset = -1;
+  pthread_mutex_init(&table->print, NULL);
   while(++offset < table->n_philos)
     pthread_mutex_init(&table->mutexes[offset], NULL);
 }
