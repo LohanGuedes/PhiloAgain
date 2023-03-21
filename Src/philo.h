@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:28:37 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/20 20:13:36 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 21:47:42 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ typedef struct s_table
 	long int	time_to_eat;
 	long int	time_to_sleep;
 	short		eat_times;
-	long int	current_time;
+	long		current_time;
 	short		is_dead;
 	t_philo		*philos;
 	t_mutex		*mutexes;
 	t_mutex		print;
+	t_mutex		death;
+	t_mutex		l_meal;
 }	t_table;
 
 
@@ -62,12 +64,16 @@ void philo_sleep(t_philo *philo);
 void philo_eat(t_philo *philo);
 void philo_think(t_philo *philo);
 void  take_fork(t_philo *philo);
-double  get_time_in_ms(void);
 void  eat_macaroon(t_philo *philo);
+int  fly_routine(t_table *table);
 void  mutexes_init(t_table *table);
 void init_philos(t_table *table);
 void* philo_routine(void *arg);
-double  get_time_in_ms(void);
+long  get_time_in_ms(void);
+void  print_death(t_philo ph);
+void check(t_philo *philo);
+void	sleep_time(long time, t_philo *philo);
+long	now(t_philo *philo);
 
 
 #endif

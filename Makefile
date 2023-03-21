@@ -6,7 +6,7 @@
 #    By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 13:43:30 by lguedes           #+#    #+#              #
-#    Updated: 2023/03/20 20:04:02 by lguedes          ###   ########.fr        #
+#    Updated: 2023/03/20 22:19:17 by lguedes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -pthread
 
 
-SRCS = $(addprefix Src/, main.c init_philos.c mutexes_init.c actions.c routines.c dinner.c) 
+SRCS = $(addprefix Src/, utils.c  main.c init_philos.c mutexes_init.c actions.c routines.c dinner.c) 
 
 OBJS = ${SRCS:.c=.o}
 
@@ -26,12 +26,12 @@ LIBFT_A = ./Includes/libft/libft.a
 LIBFT_PATH = ./Includes/libft/
 
 .c.o:
-			${CC} ${CFLAG} -g -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 all: ${NAME}
 
 ${NAME}: LIBFT ${OBJS}
-	${CC} -g ${OBJS} ${LIBFT_A} ${CLAFGS} -g  -o $(NAME)
+	${CC} -g -fsanitize=thread ${OBJS} ${LIBFT_A} ${CLAFGS} -g  -o $(NAME)
 
 
 LIBFT:

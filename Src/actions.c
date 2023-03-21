@@ -6,13 +6,13 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 06:17:47 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/14 07:11:15 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 22:08:11 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./philo.h"
 
-double  get_time_in_ms(void)
+long  get_time_in_ms(void)
 {
   struct timeval tp;
   long   ms; 
@@ -25,25 +25,23 @@ double  get_time_in_ms(void)
 
 void print_state(t_philo *philo, char *message)
 {
+  
+  pthread_mutex_lock(&philo->table->death);
   pthread_mutex_lock(&philo->table->print);
-  printf(message, get_time_in_ms(), philo->index);
+  if (philo->table->is_dead == 0)
+    printf(message, now(philo), philo->index);
   pthread_mutex_unlock(&philo->table->print);
+  pthread_mutex_unlock(&philo->table->death);
 }
 
 void philo_sleep(t_philo *philo)
 {
   print_state(philo, SLEEP);
-  usleep(philo->table->time_to_sleep * 1000);
+  sleep_time(philo->table->time_to_sleep, philo);
 }
 
 void philo_eat(t_philo *philo)
 {
   print_state(philo, EAT);
-  usleep(philo->table->time_to_eat * 1000);
-}
-
-void philo_think(t_philo *philo)
-{
-  print_state(philo, THINK);
-  return ;
+  sleep_time(philo->table->time_to_eat, philo);
 }

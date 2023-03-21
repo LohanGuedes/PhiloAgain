@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mutexes_init.c                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/14 05:31:45 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/20 21:46:17 by lguedes          ###   ########.fr       */
+/*   Created: 2023/03/20 21:34:13 by lguedes           #+#    #+#             */
+/*   Updated: 2023/03/20 21:45:23 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void  mutexes_init(t_table *table)
+void check(t_philo *philo)
 {
-  int offset;
+	if (philo->id % 2)
+		usleep(550);
+}
 
-  offset = -1;
-  pthread_mutex_init(&table->print, NULL);
-  pthread_mutex_init(&table->death, NULL);
-  pthread_mutex_init(&table->l_meal, NULL);
-  while(++offset < table->n_philos)
-    pthread_mutex_init(&table->mutexes[offset], NULL);
+long	now(t_philo *philo)
+
+{
+	long	start;
+	
+	start = philo->table->current_time;
+	return (get_time_in_ms() - start);
+}
+
+void	sleep_time(long time, t_philo *philo)
+
+{
+	long start;
+
+	start = now(philo);
+	while (now(philo) - start < time)
+		usleep(100);
 }
