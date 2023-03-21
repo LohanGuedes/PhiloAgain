@@ -6,11 +6,11 @@
 #    By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/12 13:43:30 by lguedes           #+#    #+#              #
-#    Updated: 2023/03/20 22:19:17 by lguedes          ###   ########.fr        #
+#    Updated: 2023/03/20 22:52:37 by lguedes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 
 
 #TODO Change this to cc compiler later on
@@ -25,16 +25,17 @@ OBJS = ${SRCS:.c=.o}
 LIBFT_A = ./Includes/libft/libft.a
 LIBFT_PATH = ./Includes/libft/
 
+
 .c.o:
-			${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
+	${CC} ${CFLAGS} -g -c $< -o ${<:.c=.o}
 
 all: ${NAME}
 
-${NAME}: LIBFT ${OBJS}
-	${CC} -g -fsanitize=thread ${OBJS} ${LIBFT_A} ${CLAFGS} -g  -o $(NAME)
+${NAME}: ${LIBFT_A} ${OBJS}
+	${CC} ${CLAFGS} ${OBJS} ${LIBFT_A}  -o $(NAME)
 
 
-LIBFT:
+${LIBFT_A}: 
 	make -C $(LIBFT_PATH)
 
 clean:

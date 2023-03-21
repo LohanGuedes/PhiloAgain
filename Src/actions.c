@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 06:17:47 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/20 22:08:11 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 22:46:15 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void print_state(t_philo *philo, char *message)
   pthread_mutex_lock(&philo->table->death);
   pthread_mutex_lock(&philo->table->print);
   if (philo->table->is_dead == 0)
-    printf(message, now(philo), philo->index);
+    printf("%ld %d %s\n",now(philo), philo->index, message);
   pthread_mutex_unlock(&philo->table->print);
   pthread_mutex_unlock(&philo->table->death);
 }

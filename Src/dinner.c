@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:21:49 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/20 22:17:15 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 22:40:19 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void  eat_macaroon(t_philo *philo)
   if (philo->id % 2 && philo->index != philo->table->n_philos)
   {
     pthread_mutex_unlock(&philo->table->mutexes[philo->l_fork]);
-    printf("OI PORRA\n");
     pthread_mutex_unlock(&philo->table->mutexes[philo->r_fork]);
   }
   else 

@@ -6,7 +6,7 @@
 /*   By: lguedes <lguedes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 05:28:37 by lguedes           #+#    #+#             */
-/*   Updated: 2023/03/20 21:47:42 by lguedes          ###   ########.fr       */
+/*   Updated: 2023/03/20 22:42:41 by lguedes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <unistd.h>
 # include "../Includes/libft/src/libft.h"
 
-# define TOOK_FORK "%ld %d has taken fork\n"
-# define EAT "%ld %d is eating\n"
-# define SLEEP "%ld %d is sleeping\n"
-# define THINK "%ld %d is thinking\n"
-# define DIED "%ld %d died\n" 
+# define TOOK_FORK "has taken fork"
+# define EAT "is eating"
+# define SLEEP "is sleeping"
+# define THINK "is thinking"
+# define DIED "died"
 
 typedef struct s_table	t_table;
 typedef pthread_mutex_t	t_mutex;
